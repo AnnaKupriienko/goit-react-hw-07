@@ -1,8 +1,7 @@
-// import { nanoid } from 'nanoid'
 import * as yup from 'yup';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch } from "react-redux";
-import { addContact } from '../../redux/contactsSlice';
+import { addContact } from '../../redux/contactsOps';
 import css from "./ContactForm.module.css";
 
 const validation = yup.object({
@@ -13,7 +12,7 @@ const validation = yup.object({
 export default function ContactForm() {
 const dispatch = useDispatch();
  const handleSubmit = (values, actions) => {
-       dispatch(addContact(values.name, values.number))
+     dispatch(addContact(values));
         actions.resetForm();
     }
     return (
